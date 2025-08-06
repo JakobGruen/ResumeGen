@@ -1,0 +1,175 @@
+html,
+body {
+  background: #fff;
+  color: #222;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  line-height: 1.55;
+  margin: 0;
+  padding: 0;
+}
+
+.cli-container {
+  margin: 0 auto;
+  padding: 20px 20px;
+  max-width: 700px;
+  background: #fff;
+}
+
+/* Resume header */
+header.resume-header {
+  text-align: left;
+  margin-bottom: 20px;
+  background-color: #7c7c7c40;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Cover letter header */
+header.letter-header {
+  text-align: left;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #c0c0c0;
+  font-size: 1.1em;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+address {
+  font-style: normal;
+  font-size: 10pt;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+ul.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+
+ul.contact-info li {
+  display: block;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 21pt;
+  font-weight: bold;
+  margin: 0 0 3px 0;
+}
+
+h2 {
+  font-size: 15pt;
+  font-weight: 600;
+  border-bottom: 1px solid #bbb;
+  margin-top: 18px;
+  margin-bottom: 7px;
+  padding-bottom: 2px;
+}
+
+h3 {
+  font-size: 11.5pt;
+  font-weight: bold;
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+
+.honors {
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 0.5em;
+  color: #555;
+}
+
+.entry {
+  margin-bottom: 8px;
+  background-color: #fff;
+  padding: 7px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1.5px 4px 0 rgba(0, 0, 0, 0.06);
+  background-clip: padding-box;
+  overflow: hidden;
+}
+
+.entry > div,
+.entry > ul {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+ul {
+  margin: 6px 0 0 20px;
+  padding: 0 0 0 18px;
+}
+
+li {
+  margin: 2px 0;
+}
+
+section {
+  background: none;
+  padding: 0;
+  margin: 0 0 17px 0;
+}
+
+@media print {
+  html,
+  body {
+    color: #000;
+    font-size: 10pt;
+    background: #fff;
+  }
+  .cli-container {
+    box-shadow: none;
+    background: #fff;
+    margin: 0 auto;
+    padding: 10px 10px;
+    max-width: 700px;
+  }
+  h1 {
+    font-size: 18pt;
+  }
+  h2 {
+    font-size: 12pt;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  .entry {
+    border: 1px solid #e0e0e0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    overflow: hidden !important;
+    page-break-inside: avoid;
+  }
+  header.resume-header {
+    background-color: #7c7c7c40;
+    background-clip: padding-box !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+  }
+  ul.contact-info li {
+    font-size: 9pt;
+  }
+  @page {
+    margin: 18mm 14mm 18mm 14mm;
+    {% comment %} @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+    } {% endcomment %}
+  }
+}
+a {
+  color: #004080;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+strong {
+  font-weight: bold;
+  color: #000;
+}

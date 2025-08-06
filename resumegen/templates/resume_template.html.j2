@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Professional resume generated with ResumeGen, including work experience, education, projects, certifications, and skills.">
+    <meta name="keywords"
+          content="resume, CV, work experience, education, projects, certifications, skills, job application">
+    <title>Resume</title>
+    <style>{{ style_css }}</style>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="resume-header">
+        <h1>{{ personal_information.name }} {{ personal_information.surname }}</h1>
+        <ul class="contact-info">
+          <li>
+            {% if personal_information.address or personal_information.city or personal_information.zip_code or personal_information.country %}
+              {% if personal_information.address %}{{ personal_information.address }}{% endif %}
+              {% if personal_information.city %}
+                {% if personal_information.address %},{% endif %}
+                {{ personal_information.city }}
+              {% endif %}
+              {% if personal_information.zip_code %}, {{ personal_information.zip_code }}{% endif %}
+              {% if personal_information.country %}, {{ personal_information.country }}{% endif %}
+            </li>
+          {% endif %}
+          {% if personal_information.email or personal_information.phone %}
+            <li>
+              {% if personal_information.email %}
+                Email: <a href="mailto:{{ personal_information.email }}">{{ personal_information.email }}</a>
+              {% endif %}
+              {% if personal_information.phone %}| Phone: {{ personal_information.phone }}{% endif %}
+            </li>
+          {% endif %}
+          {% if personal_information.linkedin %}
+            <li>
+              LinkedIn: <a href="{{ personal_information.linkedin }}">Profile</a>
+            </li>
+          {% endif %}
+          {% if personal_information.github %}
+            <li>
+              GitHub: <a href="{{ personal_information.github }}">Profile</a>
+            </li>
+          {% endif %}
+        </ul>
+      </header>
+      {% if work_experience %}
+        <section>
+          <h2>Work Experience</h2>
+          {% for job in work_experience %}
+            <article class="entry">
+              <h3>{{ job.job_title }}</h3>
+              <div>
+                <span><strong>{{ job.company }}</strong></span> |
+                <span>{{ job.location }}</span> |
+                <time>{{ job.employment_period }}</time>
+              </div>
+              <ul>
+                {% if job.responsibilities %}<li>{{ job.responsibilities|safe }}</li>{% endif %}
+                {% if job.acquired_skills %}<li>{{ job.acquired_skills|safe }}</li>{% endif %}
+                {% if job.achievements %}<li>{{ job.achievements|safe }}</li>{% endif %}
+              </ul>
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
+      {% if education %}
+        <section>
+          <h2>Education</h2>
+          {% for degree in education %}
+            <article class="entry">
+              <h3>
+                {{ degree.degree }}
+                {% if degree.honors %}<span class="honors">{{ degree.honors }}</span>{% endif %}
+              </h3>
+              <div>
+                <span><strong>{{ degree.institution }}</strong></span> |
+                <span>{{ degree.field_of_study }}</span> |
+                <span>Grade: {{ degree.final_evaluation_grade }}</span>
+                {% if degree.year_of_completion %}
+                  {% if degree.start_year %}
+                    | <time>{{ degree.start_year }} – {{ degree.year_of_completion }}</time>
+                  {% else %}
+                    | <time>{{ degree.year_of_completion }}</time>
+                  {% endif %}
+                {% endif %}
+              </div>
+              {% if degree.courses or degree.projects %}
+                <ul>
+                  {% for course in degree.courses %}
+                    <li>
+                      {{ course.name }}
+                      {% if course.grade %}(Grade: {{ course.grade }}){% endif %}
+                    </li>
+                  {% endfor %}
+                  {% for project in degree.projects %}
+                    <li>
+                      {{ project.name }}
+                      {% if project.grade %}(Grade: {{ project.grade }}){% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
+      {% if projects %}
+        <section>
+          <h2>Projects</h2>
+          {% for project in projects %}
+            <article class="entry">
+              <h3>
+                <span>{{ project.name }}</span>
+                {% if project.link %}
+                  {% if project.platform %}
+                    | <span><a href="{{ project.link }}">{{ project.platform }}</a></span>
+                  {% else %}
+                    | <span><a href="{{ project.link }}">Project Link</a></span>
+                  {% endif %}
+                {% endif %}
+              </h3>
+              <ul>
+                {% if project.description %}<li>{{ project.description|safe }}</li>{% endif %}
+                {% if project.acquired_skills %}<li>{{ project.acquired_skills|safe }}</li>{% endif %}
+                {% if project.achievements %}<li>{{ project.achievements|safe }}</li>{% endif %}
+              </ul>
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
+      {% if certifications %}
+        <section>
+          <h2>Certifications</h2>
+          {% for cert in certifications %}
+            <article class="entry">
+              <h3>
+                <span>{{ cert.name }}</span>
+                {% if cert.issuing_organization %}
+                  {% if cert.link %}
+                    | <span><a href="{{ cert.link }}">{{ cert.issuing_organization }}</a></span>
+                  {% else %}
+                    | <span>{{ cert.issuing_organization }}</span>
+                  {% endif %}
+                {% endif %}
+              </h3>
+              <ul>
+                {% if cert.description %}<li>{{ cert.description|safe }}</li>{% endif %}
+                {% if cert.acquired_skills %}<li>{{ cert.acquired_skills|safe }}</li>{% endif %}
+              </ul>
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
+      {% if additional_skills %}
+        <section>
+          <h2>Skills</h2>
+          <ul>
+            {% for cat in additional_skills %}
+              <li>
+                <strong>{{ cat.category }}:</strong>
+                {% for skill in cat.specific_skills %}
+                  {{ skill.name }}
+                  {% if skill.proficiency %}({{ skill.proficiency }}){% endif %}
+                  {% if not loop.last %},{% endif %}
+                {% endfor %}
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+    </div>
+  </body>
+</html>

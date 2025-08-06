@@ -1,0 +1,25 @@
+# Git
+.git
+
+# Python cache and environments
+__pycache__/
+*.pyc
+.venv/
+
+# Node.js
+node_modules/
+
+# Lock files (since you don't want them)
+package-lock.json
+uv.lock
+
+# OS files
+.DS_Store
+
+# Output files (but keep input data)
+data/*.pdf
+data/*.html
+
+# Docker files
+Dockerfile*
+.dockerignore

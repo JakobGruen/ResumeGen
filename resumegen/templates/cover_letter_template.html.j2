@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Professional cover letter generated for job applications.">
+    <meta name="keywords"
+          content="cover letter, job application, resume, professional, template">
+    <title>Cover Letter</title>
+    <style>{{ style_css }}</style>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="letter-header">
+        <strong>{{ personal_information.name or '' }} {{ personal_information.surname or '' }}</strong>
+        <br>
+        <address>
+          {{ personal_information.address or '' }}
+          <br>
+          {{ personal_information.city or '' }}
+          {% if personal_information.zip_code %}, {{ personal_information.zip_code }}{% endif %}
+          <br>
+          {% if personal_information.country %}
+            {{ personal_information.country }}
+            <br>
+          {% endif %}
+          Email: <a href="mailto:{{ personal_information.email }}">{{ personal_information.email }}</a>
+          <br>
+          Phone: {{ personal_information.phone or '' }}
+        </address>
+      </header>
+      <main>
+        <section class="recipient-block">
+          <div>
+            <strong>{{ company or '' }}</strong>
+            <br>
+            {{ position or '' }}
+          </div>
+          <div>
+            <time datetime="{{ date|replace(' ', '-') }}">{{ date }}</time>
+          </div>
+        </section>
+        <section class="cover-content">
+          <p>Dear {{ addressee or 'Hiring Team' }},</p>
+          <p>{{ opening_paragraph }}</p>
+          {% for paragraph in body_paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+          <p>{{ closing_paragraph }}</p>
+          <p>Sincerely,</p>
+          <p>{{ personal_information.name or '' }} {{ personal_information.surname or '' }}</p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

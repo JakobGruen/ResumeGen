@@ -1,0 +1,80 @@
+{
+  "education": [
+    {
+      "degree": "",
+      "institution": "",
+      "field_of_study": "",
+      "final_evaluation_grade": "",
+      "honors": "",
+      "start_year": "",
+      "year_of_completion": "",
+      "courses": [{ "name": "", "grade": "" }],
+      "projects": [{ "name": "", "grade": "" }]
+    }
+  ],
+  "work_experience": [
+    {
+      "job_title": "",
+      "company": "",
+      "employment_type": "",
+      "employment_period": "",
+      "location": "",
+      "responsibilities": "",
+      "acquired_skills": "",
+      "achievements": ""
+    }
+  ],
+  "projects": [
+    {
+      "name": "",
+      "link": "",
+      "platform": "",
+      "description": "",
+      "acquired_skills": "",
+      "achievements": ""
+    }
+  ],
+  "achievements": [
+    {
+      "title": "",
+      "description": "",
+      "relevance": ""
+    }
+  ],
+  "certifications": [
+    {
+      "name": "",
+      "issuing_organization": "",
+      "link": "",
+      "description": "",
+      "acquired_skills": ""
+    }
+  ],
+  "additional_skills": [
+    {
+      "category": "",
+      "specific_skills": [
+        { "name": "", "proficiency": "" },
+        { "name": "", "proficiency": "" }
+      ]
+    },
+    {
+      "category": "",
+      "specific_skills": [
+        { "name": "", "proficiency": "" },
+        { "name": "", "proficiency": "" }
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "title": "",
+      "authors": "",
+      "publisher": "",
+      "publication_year": "",
+      "link": "",
+      "description": "",
+      "acquired_skills": ""
+    }
+  ]
+}

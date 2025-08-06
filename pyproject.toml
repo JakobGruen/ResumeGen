@@ -1,0 +1,52 @@
+[project]
+name = "resumegen"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+    "jinja2>=3.1.6",
+    "pydantic>=2.11.7",
+    "typer>=0.16.0",
+    "requests>=2.31.0",
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pypdf>=3.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["resumegen*"]
+
+[project.scripts]
+resumegen = "resumegen.launcher:main"
+resumegen-cli = "resumegen.cli:app"
+resumegen-api = "resumegen.api:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--strict-markers",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "api: marks tests that require API services",
+    "script: marks tests for script/CLI functionality",
+    "docker: marks tests that require Docker services",
+]

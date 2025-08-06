@@ -1,0 +1,36 @@
+# PDF Service Dockerfile
+FROM node:20-alpine
+
+# Install Chromium and dependencies
+RUN apk add --no-cache \
+    chromium \
+    curl \
+    nss \
+    freetype \
+    ttf-freefont \
+    && addgroup -g 1001 -S appuser \
+    && adduser -S appuser -u 1001 -G appuser
+
+WORKDIR /app
+
+# Set Puppeteer environment
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+# Install Node.js dependencies
+COPY PdfService/package.json ./
+RUN npm install --omit=dev
+
+# Copy PDF service code
+COPY PdfService/ ./
+
+RUN chown -R appuser:appuser /app
+USER appuser
+
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3000/health
+
+CMD ["node", "server.js"]

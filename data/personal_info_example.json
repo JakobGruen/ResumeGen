@@ -1,0 +1,13 @@
+{
+  "name": "John",
+  "surname": "Doe",
+  "date_of_birth": "01/01/1990",
+  "address": "123 Main St",
+  "city": "New York",
+  "country": "USA",
+  "zip_code": "10001",
+  "email": "john.doe@example.com",
+  "phone": "+1-234-567-8900",
+  "linkedin": "https://linkedin.com/in/johndoe",
+  "github": "https://github.com/johndoe"
+}
