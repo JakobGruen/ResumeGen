@@ -59,7 +59,54 @@
             {% endif %}
           </div>
         </section>
-        {% endif %}
+      {% endif %}
+      {% if projects %}
+        <section>
+          <h2>Projects</h2>
+          {% for project in projects %}
+            <article class="entry">
+              <h3>
+                <span>{{ project.name }}</span>
+                {% if project.link %}
+                  {% if project.platform %}
+                    | <span><a href="{{ project.link }}">{{ project.platform }}</a></span>
+                  {% else %}
+                    | <span><a href="{{ project.link }}">Project Link</a></span>
+                  {% endif %}
+                {% endif %}
+              </h3>
+              <ul>
+                {% if project.description %}<li>{{ project.description|safe }}</li>{% endif %}
+                {% if project.acquired_skills %}<li>{{ project.acquired_skills|safe }}</li>{% endif %}
+                {% if project.achievements %}<li>{{ project.achievements|safe }}</li>{% endif %}
+              </ul>
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
+      {% if certifications %}
+        <section>
+          <h2>Certifications</h2>
+          {% for cert in certifications %}
+            <article class="entry">
+              <h3>
+                <span>{{ cert.name }}</span>
+                {% if cert.issuing_organization %}
+                  {% if cert.link %}
+                    | <span><a href="{{ cert.link }}">{{ cert.issuing_organization }}</a></span>
+                  {% else %}
+                    | <span>{{ cert.issuing_organization }}</span>
+                  {% endif %}
+                {% endif %}
+              </h3>
+              <ul>
+                {% if cert.description %}<li>{{ cert.description|safe }}</li>{% endif %}
+                {% if cert.acquired_skills %}<li>{{ cert.acquired_skills|safe }}</li>{% endif %}
+              </ul>
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
       {% if work_experience %}
         <section>
           <h2>Work Experience</h2>
@@ -117,53 +164,6 @@
                   {% endfor %}
                 </ul>
               {% endif %}
-            </article>
-          {% endfor %}
-        </section>
-      {% endif %}
-      {% if projects %}
-        <section>
-          <h2>Projects</h2>
-          {% for project in projects %}
-            <article class="entry">
-              <h3>
-                <span>{{ project.name }}</span>
-                {% if project.link %}
-                  {% if project.platform %}
-                    | <span><a href="{{ project.link }}">{{ project.platform }}</a></span>
-                  {% else %}
-                    | <span><a href="{{ project.link }}">Project Link</a></span>
-                  {% endif %}
-                {% endif %}
-              </h3>
-              <ul>
-                {% if project.description %}<li>{{ project.description|safe }}</li>{% endif %}
-                {% if project.acquired_skills %}<li>{{ project.acquired_skills|safe }}</li>{% endif %}
-                {% if project.achievements %}<li>{{ project.achievements|safe }}</li>{% endif %}
-              </ul>
-            </article>
-          {% endfor %}
-        </section>
-      {% endif %}
-      {% if certifications %}
-        <section>
-          <h2>Certifications</h2>
-          {% for cert in certifications %}
-            <article class="entry">
-              <h3>
-                <span>{{ cert.name }}</span>
-                {% if cert.issuing_organization %}
-                  {% if cert.link %}
-                    | <span><a href="{{ cert.link }}">{{ cert.issuing_organization }}</a></span>
-                  {% else %}
-                    | <span>{{ cert.issuing_organization }}</span>
-                  {% endif %}
-                {% endif %}
-              </h3>
-              <ul>
-                {% if cert.description %}<li>{{ cert.description|safe }}</li>{% endif %}
-                {% if cert.acquired_skills %}<li>{{ cert.acquired_skills|safe }}</li>{% endif %}
-              </ul>
             </article>
           {% endfor %}
         </section>
