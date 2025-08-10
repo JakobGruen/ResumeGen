@@ -29,7 +29,7 @@ build-backend = "setuptools.build_meta"
 include = ["resumegen*"]
 
 [project.scripts]
-resumegen = "resumegen.launcher:main"
+resumegen = "resumegen.cli:app"
 resumegen-cli = "resumegen.cli:app"
 resumegen-api = "resumegen.api:app"
 

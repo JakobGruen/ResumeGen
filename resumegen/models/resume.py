@@ -214,6 +214,10 @@ class Resume(BaseModel):
     personal_information: PersonalInfo = Field(
         description="Personal information of the candidate, such as name, contact details, and LinkedIn profile.",
     )
+    professional_summary: str | list[str] | None = Field(
+        None,
+        description="A brief summary of the candidate's professional background and career goals.",
+    )
     education: list[Degree] = Field(
         None, description="The education details of the candidate."
     )

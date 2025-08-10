@@ -46,6 +46,20 @@
           {% endif %}
         </ul>
       </header>
+      {% if professional_summary %}
+        <section class="professional-summary">
+          <h2>Professional Summary</h2>
+          <div class="professional-summary-content">
+            {% if professional_summary is string %}
+                <p>{{ professional_summary|safe }}</p>
+            {% else %}
+                {% for paragraph in professional_summary %}
+                <p>{{ paragraph|safe }}</p>
+                {% endfor %}
+            {% endif %}
+          </div>
+        </section>
+        {% endif %}
       {% if work_experience %}
         <section>
           <h2>Work Experience</h2>
