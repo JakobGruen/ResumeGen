@@ -81,7 +81,7 @@ def docker_compose_services(request):
         # Wait for services to be healthy
         print("⏳ Waiting for services to be ready...")
         wait_for_service("http://localhost:8000/health", timeout=60)
-        wait_for_service("http://localhost:3000/health", timeout=60)
+        # Note: PDF service is internal to Docker network, accessed via main API
         print("✅ Services are ready!")
 
         yield

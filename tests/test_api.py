@@ -230,7 +230,6 @@ class TestResumeGeneratorAPI:
 class TestResumeGeneratorIntegration:
     """Integration tests for the Resume Generator API"""
 
-    @pytest.mark
     def test_multiple_concurrent_requests(self, api_base_url, api_request_resume):
         """Test handling multiple concurrent requests"""
         import concurrent.futures

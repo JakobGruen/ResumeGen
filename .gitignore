@@ -22,3 +22,4 @@ wheels/
 # Output
 data/*.pdf
 data/*.html
+CLAUDE.md

@@ -41,12 +41,10 @@ python_functions = ["test_*"]
 addopts = [
     "-v",
     "--tb=short",
-    "--strict-markers",
+    "--strict-markers"
 ]
 markers = [
-    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
-    "integration: marks tests as integration tests",
     "api: marks tests that require API services",
-    "script: marks tests for script/CLI functionality",
+    "cli: marks tests for script/CLI functionality",
     "docker: marks tests that require Docker services",
 ]
