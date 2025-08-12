@@ -14,6 +14,7 @@ from resumegen.models.resume import Resume
 from resumegen.models.cover_letter import CoverLetter
 from resumegen.models.personal_info import PersonalInfo
 from resumegen.pdf_service import generate_pdf
+from resumegen.utils import create_resume_with_personal_info, create_cover_letter_with_personal_info
 
 app = FastAPI(
     title="Resume Generator API",
@@ -60,15 +61,8 @@ def health_check():
 async def generate_resume_api(request: ResumeRequest):
     """Generate resume from JSON data"""
     try:
-        # Parse and validate data
-        personal_info = PersonalInfo(**request.personal_info)
-
-        # Combine resume data with personal information
-        resume_data_with_personal = {
-            **request.resume_data,
-            "personal_information": request.personal_info,
-        }
-        resume = Resume(**resume_data_with_personal)
+        # Create resume using utility function that handles personal info properly
+        resume = create_resume_with_personal_info(request.resume_data, request.personal_info)
 
         # Render HTML
         html_content = render_resume(resume)
@@ -112,15 +106,8 @@ async def generate_resume_api(request: ResumeRequest):
 async def generate_cover_letter_api(request: CoverLetterRequest):
     """Generate cover letter from JSON data"""
     try:
-        # Parse and validate data
-        personal_info = PersonalInfo(**request.personal_info)
-
-        # Combine cover letter data with personal information
-        cover_letter_data_with_personal = {
-            **request.cover_letter_data,
-            "personal_information": request.personal_info,
-        }
-        cover_letter = CoverLetter(**cover_letter_data_with_personal)
+        # Create cover letter using utility function that handles personal info properly
+        cover_letter = create_cover_letter_with_personal_info(request.cover_letter_data, request.personal_info)
 
         # Render HTML
         html_content = render_cover_letter(cover_letter)

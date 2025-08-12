@@ -6,6 +6,7 @@ from resumegen.jinja_render import render_resume, render_cover_letter
 from resumegen.storage import save_html, load_json
 from resumegen.models import Resume, CoverLetter, PersonalInfo
 from resumegen.pdf_service import generate_pdf
+from resumegen.utils import create_resume_with_personal_info, create_cover_letter_with_personal_info
 from rich import print
 
 app = Typer(no_args_is_help=True)
@@ -59,9 +60,9 @@ def generate_resume(
     out_pdf = Path(out_pdf).resolve()
 
     resume_data = load_json(resume_path)
-    info_data = load_json(info_path)
+    info_data = load_json(info_path) if info_path else None
 
-    resume = Resume(**resume_data, personal_information=info_data)
+    resume = create_resume_with_personal_info(resume_data, info_data)
 
     html_content = render_resume(resume)
     save_html(html_content, out_html)
@@ -114,10 +115,10 @@ def generate_cover_letter(
     out_html = Path(out_html).resolve()
     out_pdf = Path(out_pdf).resolve()
 
-    info_data = load_json(info_path)
+    info_data = load_json(info_path) if info_path else None
     letter_data = load_json(letter_path)
 
-    cover_letter = CoverLetter(**letter_data, personal_information=info_data)
+    cover_letter = create_cover_letter_with_personal_info(letter_data, info_data)
 
     html_content = render_cover_letter(cover_letter)
     save_html(html_content, out_html)

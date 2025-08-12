@@ -150,18 +150,22 @@
               </div>
               {% if degree.courses or degree.projects %}
                 <ul>
-                  {% for course in degree.courses %}
-                    <li>
-                      {{ course.name }}
-                      {% if course.grade %}(Grade: {{ course.grade }}){% endif %}
-                    </li>
-                  {% endfor %}
-                  {% for project in degree.projects %}
-                    <li>
-                      {{ project.name }}
-                      {% if project.grade %}(Grade: {{ project.grade }}){% endif %}
-                    </li>
-                  {% endfor %}
+                  {% if degree.courses %}
+                    {% for course in degree.courses %}
+                      <li>
+                        {{ course.name }}
+                        {% if course.grade %}(Grade: {{ course.grade }}){% endif %}
+                      </li>
+                    {% endfor %}
+                  {% endif %}
+                  {% if degree.projects %}
+                    {% for project in degree.projects %}
+                      <li>
+                        {{ project.name }}
+                        {% if project.grade %}(Grade: {{ project.grade }}){% endif %}
+                      </li>
+                    {% endfor %}
+                  {% endif %}
                 </ul>
               {% endif %}
             </article>
