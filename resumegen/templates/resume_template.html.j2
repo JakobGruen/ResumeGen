@@ -127,6 +127,30 @@
           {% endfor %}
         </section>
       {% endif %}
+      {% if publications %}
+        <section>
+          <h2>Publications</h2>
+          {% for pub in publications %}
+            <article class="entry">
+              <h3>
+                <span>{{ pub.title }}</span>
+                {% if pub.link %}
+                  | <span><a href="{{ pub.link }}">Link</a></span>
+                {% endif %}
+              </h3>
+              <div>
+                <span><strong>{{ pub.authors }}</strong></span>
+                {% if pub.publisher %}| <span>{{ pub.publisher }}</span>{% endif %}
+                {% if pub.publication_year %}| <time>{{ pub.publication_year }}</time>{% endif %}
+              </div>
+              <ul>
+                {% if pub.description %}<li>{{ pub.description|safe }}</li>{% endif %}
+                {% if pub.acquired_skills %}<li>{{ pub.acquired_skills|safe }}</li>{% endif %}
+              </ul>
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
       {% if education %}
         <section>
           <h2>Education</h2>
@@ -168,6 +192,20 @@
                   {% endif %}
                 </ul>
               {% endif %}
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
+      {% if achievements %}
+        <section>
+          <h2>Achievements</h2>
+          {% for achievement in achievements %}
+            <article class="entry">
+              <h3>{{ achievement.title }}</h3>
+              <ul>
+                {% if achievement.description %}<li>{{ achievement.description|safe }}</li>{% endif %}
+                {% if achievement.relevance %}<li>{{ achievement.relevance|safe }}</li>{% endif %}
+              </ul>
             </article>
           {% endfor %}
         </section>
